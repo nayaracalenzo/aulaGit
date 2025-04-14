@@ -16,6 +16,22 @@ header {
     padding: 30px 100px;
 }
 
+.form-header {
+    width: 40%;
+    display: flex;
+}
+
+.form-header input{
+    border-radius: 5px 0 0 5px;
+    height: 40px;
+    width: 80%;
+}
+
+.form-header button {
+    border-radius: 0 5px 5px 0;
+    padding: 12px;
+}
+
 .nav-header, .nav-header ul {
     display: flex;
     gap: 20px;
