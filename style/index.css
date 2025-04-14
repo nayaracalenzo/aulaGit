@@ -8,6 +8,24 @@
     font-family: "Inter", sans-serif;
 }
 
+header {
+    color: #fff;
+    display: flex;
+    background-color: #242e56;
+    justify-content: space-between;
+    padding: 30px 100px;
+}
+
+.nav-header, .nav-header ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.lista-icone {
+    display: none;
+}
+
 .div-card {
     border: 1px solid #9f9c9c;
     width: 15%;
