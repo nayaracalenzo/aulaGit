@@ -15,6 +15,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 100px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
 }
 
 .form-header {
@@ -56,6 +60,7 @@ header {
 
 .section-cards {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -119,7 +124,24 @@ h2 > a {
     font-size: 28px;
     font-weight: 600;
 }
-/* (width <= 998px) ou (max-width: 998px) */
+/* (width <= 998px) ou (max-width: 998px) Tablet deitado */ 
 @media screen and (width <= 998px) {    
-    
+    header {
+        flex-wrap: wrap;
+    }
+    .form-header {
+        order: 2;
+        width: 100%;
+    }
+    .form-header input {
+        width: 120%;
+    }
+
+    .lista-icone {
+        display: inline;
+    }
+
+    .lista-links li {
+        display: none;
+    }
 }
