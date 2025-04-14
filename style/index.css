@@ -119,3 +119,7 @@ h2 > a {
     font-size: 28px;
     font-weight: 600;
 }
+/* (width <= 998px) ou (max-width: 998px) */
+@media screen and (width <= 998px) {    
+    
+}
