@@ -135,6 +135,21 @@ h2 > a {
     font-size: 28px;
     font-weight: 600;
 }
+
+footer {
+    background-color: #242e56;
+    color: #fff;
+}
+
+.nav-footer a {
+    color: #fff;
+}
+
+.nav-footer a:hover {
+    text-decoration: underline;
+}
+
+
 /* (width <= 998px) ou (max-width: 998px) Tablet deitado */ 
 @media screen and (width <= 998px) {    
     header {
