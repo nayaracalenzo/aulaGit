@@ -147,14 +147,16 @@ footer {
     display: block;
 }
 
-.div-footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.div-footer-flex {
+    display: flex;
+    justify-content: space-between;
 }
 
 .nav-footer {
     display: grid;
+    gap: 30px;
     grid-template-columns: 1fr 1fr;
+    padding-right: 100px;
 }
 
 .nav-footer ul {
@@ -217,5 +219,12 @@ hr {
         position: absolute;
         padding: 10px;
         
+    }
+    .div-footer-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-footer {
+        padding: 0;
     }
 }
