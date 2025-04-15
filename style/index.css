@@ -58,6 +58,10 @@ main {
     height: fit-content;
 }
 
+.button-hidden {
+    display: none;
+}
+
 .div-card {
     border: 1px solid #9f9c9c;
     width: 230px;
@@ -182,7 +186,7 @@ hr {
 }
 
 /* (width <= 998px) ou (max-width: 998px) Tablet deitado */ 
-@media screen and (width <= 998px) {    
+@media screen and (width <= 998px) {   
     header {
         flex-wrap: wrap;
     }
@@ -193,23 +197,25 @@ hr {
     .form-header input {
         width: 120%;
     }
-
+    
     .lista-icone {
         display: inline;
     }
-
+    
     .lista-links li {
         display: none;
     }
-    .aside-filtro{
-        display: none;
-    }
-    main{
+
+    main {
         display: flex;
     }
-    .hidden-button{
+    .aside-filtro {
+        display: none;
+    } 
+    .button-hidden {
         display: block;
         position: absolute;
         padding: 10px;
+        
     }
 }
