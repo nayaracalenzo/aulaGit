@@ -52,6 +52,12 @@ main {
     grid-template-columns: 1fr 3fr;
 }
 
+.aside-filtro {
+    position: sticky;
+    top: 110px;
+    height: fit-content;
+}
+
 .div-card {
     border: 1px solid #9f9c9c;
     width: 230px;
