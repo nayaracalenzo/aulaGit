@@ -1,12 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
+ * {
     box-sizing: border-box;
     text-decoration: none;
     font-family: "Inter", sans-serif;
-}
+} 
 
 header {
     color: #fff;
@@ -209,15 +205,6 @@ hr {
 
     main {
         display: flex;
-    }
-    .aside-filtro {
-        display: none;
-    } 
-    .button-hidden {
-        display: block;
-        position: absolute;
-        padding: 10px;
-        
     }
     .div-footer-flex {
         flex-direction: column;
