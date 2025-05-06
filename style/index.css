@@ -1,17 +1,13 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
+ * {
     box-sizing: border-box;
     text-decoration: none;
     font-family: "Inter", sans-serif;
-}
+} 
 
 header {
     color: #fff;
     display: flex;
-    background-color: #242e56;
+    /* background-color: #242e56; */
     justify-content: space-between;
     align-items: center;
     padding: 30px 100px;
@@ -45,11 +41,6 @@ header {
 
 .lista-icone {
     display: none;
-}
-
-main {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
 }
 
 .aside-filtro {
@@ -142,19 +133,20 @@ h2 > a {
 
 footer {
     padding: 20px 100px;
-    background-color: #242e56;
     color: #fff;
     display: block;
 }
 
-.div-footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.div-footer-flex {
+    display: flex;
+    justify-content: space-between;
 }
 
 .nav-footer {
     display: grid;
+    gap: 30px;
     grid-template-columns: 1fr 1fr;
+    padding-right: 100px;
 }
 
 .nav-footer ul {
@@ -209,13 +201,11 @@ hr {
     main {
         display: flex;
     }
-    .aside-filtro {
-        display: none;
-    } 
-    .button-hidden {
-        display: block;
-        position: absolute;
-        padding: 10px;
-        
+    .div-footer-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-footer {
+        padding: 0;
     }
 }
