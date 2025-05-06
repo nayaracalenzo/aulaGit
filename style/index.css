@@ -43,11 +43,6 @@ header {
     display: none;
 }
 
-main {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-}
-
 .aside-filtro {
     position: sticky;
     top: 110px;
