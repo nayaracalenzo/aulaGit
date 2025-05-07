@@ -1,6 +1,7 @@
 const searchInput = document.getElementById('searchInput')
 const searchButton = document.getElementById('searchButton')
 const booksContainer = document.getElementById('booksContainer')
+const metaLivros = document.getElementById('metaLivros')
 
 searchButton.addEventListener('click', (event) => {
     event.preventDefault()
@@ -13,9 +14,9 @@ searchButton.addEventListener('click', (event) => {
 function fetchBooks(query) {
     console.log('1')
     fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&language=por`)
-    console.log('2')
     .then(res => res.json())
     .then(dados => {
+        console.log('2')
         const livrosFiltrados = dados.docs.filter(item => 
         item.language.includes('por') && !item.language.includes('eng')
         ).slice(0,10);
@@ -35,9 +36,12 @@ function fetchBooks(query) {
                 </div>
                 <div class="div-texto">
                     <div class="div-titulo">
-                        <h1>${item.title}</h1>
+                        <h1 class="truncate text-xs font-bold w-full">${item.title}</h1>
                     </div>
-                    <h2>${item.author_name}</h2>
+                    <h2 class="my-2">${item.author_name}</h2>
+                    <button class="rounded-md flex justify-center w-full h-6 p-1 border border-blue-500">
+                    <i class="text-blue-500 fa-solid fa-plus"></i>
+                    </button>
                 </div>
             </div>
         
