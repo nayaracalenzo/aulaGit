@@ -12,9 +12,14 @@ searchButton.addEventListener('click', (event) => {
 })
 
 function fetchBooks(query) {
+    booksContainer.innerHTML = `
+        <img src="https://themoonjoy.com/wp-content/uploads/2019/03/loading.gif" alt="carregando" class="w-[50px]">
+    `
     fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&language=por`)
     .then(res => res.json())
     .then(dados => {
+        
+        
         const livrosFiltrados = dados.docs.filter(item => 
         item.language.includes('por') && !item.language.includes('eng')
         ).slice(0,10);
@@ -25,18 +30,18 @@ function fetchBooks(query) {
         }
         
         booksContainer.innerHTML = livrosFiltrados.map(item => {
-            const urlImagem = `https://covers.openlibrary.org/b/id/${item.cover_i}-M.jpg`
+            const urlImagem = item.cover_i ? `https://covers.openlibrary.org/b/id/${item.cover_i}-M.jpg` : `https://placehold.co/150x200@2x?text=${item.title.slice(0,30)}`
         return `
             <div class="div-card">
                 <div class="div-img">
-                    <img src='${urlImagem}' alt="capa do livro">
-                    <p class="tag-p">frete grátis</p>
+                    <img src='${urlImagem}' alt="capa do livro" class="w-[150px] h-auto mb-5">
+                    <p class="tag-p text-xs">frete grátis</p>
                 </div>
                 <div class="div-texto">
                     <div class="div-titulo">
                         <h1 class="truncate text-xs font-bold w-full">${item.title}</h1>
                     </div>
-                    <h2 class="my-2">${item.author_name}</h2>
+                    <h2 class="my-2 ">${item.author_name}</h2>
                     <button onclick="adicionarLivro('${urlImagem}')" class="rounded-md flex justify-center w-full h-6 p-1 border border-blue-500">
                     <i class="text-blue-500 fa-solid fa-plus"></i>
                     </button>
@@ -52,13 +57,34 @@ function fetchBooks(query) {
 }
 
 function adicionarLivro (capa) {
-    metaLivros.innerHTML += `
+    const livrosSalvos = JSON.parse(localStorage.getItem('metaLivros')) || [];
+    if (!livrosSalvos.includes(capa)) {
+         metaLivros.innerHTML += `
         <div class="div-card w-[60px]">
             <div class="div-img">
                 <img src='${capa}' alt="capa do livro" class="w-[150px] h-auto">
             </div>
         </div> 
     ` 
+    livrosSalvos.push(capa)
+}
+    localStorage.setItem('metaLivros', JSON.stringify(livrosSalvos))
+}
+
+document.addEventListener('DOMContentLoaded', carregarLivrosSalvos)
+
+function carregarLivrosSalvos () {
+    const livrosSalvos = JSON.parse(localStorage.getItem('metaLivros')) || [];
+
+    livrosSalvos.forEach( capa => {
+        metaLivros.innerHTML += `
+        <div class="div-card w-[60px]">
+            <div class="div-img">
+                <img src='${capa}' alt="capa do livro" class="w-[150px] h-auto">
+            </div>
+        </div> 
+    ` 
+    });
 }
 
 
