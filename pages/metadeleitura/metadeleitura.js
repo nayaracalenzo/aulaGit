@@ -60,7 +60,8 @@ function adicionarLivro (capa) {
     const livrosSalvos = JSON.parse(localStorage.getItem('metaLivros')) || [];
     if (!livrosSalvos.includes(capa)) {
          metaLivros.innerHTML += `
-        <div class="div-card w-[60px]">
+        <div class="div-card group w-[60px] relative">
+            <button onclick="removerLivro('${capa}')" class="group-hover:block hidden absolute z-99 right-2 top-2 cursor-pointer w-10 h-10 rounded-full bg-red-700"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
             <div class="div-img">
                 <img src='${capa}' alt="capa do livro" class="w-[150px] h-auto">
             </div>
@@ -75,10 +76,14 @@ document.addEventListener('DOMContentLoaded', carregarLivrosSalvos)
 
 function carregarLivrosSalvos () {
     const livrosSalvos = JSON.parse(localStorage.getItem('metaLivros')) || [];
+    
+    metaLivros.innerHTML = ''
 
     livrosSalvos.forEach( capa => {
+
         metaLivros.innerHTML += `
-        <div class="div-card w-[60px]">
+        <div class="div-card w-[60px] relative group">
+            <button onclick="removerLivro('${capa}')" class="group-hover:block hidden absolute z-99 right-2 top-2 cursor-pointer w-10 h-10 rounded-full bg-red-700"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
             <div class="div-img">
                 <img src='${capa}' alt="capa do livro" class="w-[150px] h-auto">
             </div>
@@ -87,4 +92,10 @@ function carregarLivrosSalvos () {
     });
 }
 
+function removerLivro (capa) {
+    const livrosSalvos = JSON.parse(localStorage.getItem('metaLivros')) || [];
+    const novaLista = livrosSalvos.filter(capaSalva => capaSalva !== capa)
+    localStorage.setItem('metaLivros', JSON.stringify(novaLista));
 
+    carregarLivrosSalvos()
+}
