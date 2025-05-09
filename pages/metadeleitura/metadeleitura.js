@@ -2,6 +2,7 @@ const searchInput = document.getElementById('searchInput')
 const searchButton = document.getElementById('searchButton')
 const booksContainer = document.getElementById('booksContainer')
 const metaLivros = document.getElementById('metaLivros')
+const formLivro = document.getElementById('formLivro')
 
 searchButton.addEventListener('click', (event) => {
     event.preventDefault()
@@ -10,6 +11,23 @@ searchButton.addEventListener('click', (event) => {
     fetchBooks(query)
 
 })
+
+formLivro.addEventListener('check', (event) => {
+    event.preventDefault()
+    const title = document.getElementById('tituloLivro')
+    const author_name = document.getElementById('autorLivro')
+    const capa = document.getElementById('imgLivro')
+
+    salvarLivrosLocais({title, author_name, capa})
+    alert('Livro salvo com sucesso')
+    formLivro.reset()
+})
+
+function salvarLivrosLocais (livro) {
+    const livrosSalvos = JSON.parse(localStorage.getItem('livrosPersonalizados')) || [];
+    livrosSalvos.push()
+    localStorage.setItem('livrosPersonalizados', JSON.stringify(livrosSalvos))
+}
 
 function fetchBooks(query) {
     booksContainer.innerHTML = `
@@ -49,6 +67,7 @@ function fetchBooks(query) {
             </div>
         
         `}).join('')
+
     })
     .catch( erro => {
         console.log('Erro ao buscar livros:', erro)
@@ -61,8 +80,8 @@ function adicionarLivro (capa) {
     if (!livrosSalvos.includes(capa)) {
          metaLivros.innerHTML += `
         <div class="div-card group w-[60px] relative">
-            <button onclick="abrirModal('${capa}')" class="cursor-pointer absolute top-0 left-2 z-99"><i class="fa-solid fa-bookmark text-blue-500" style="font-size:24px;"capa='${capa}'></i></button>
-            <button onclick="removerLivro('${capa}')" class="group-hover:block hidden absolute z-99 right-2 top-2 cursor-pointer w-10 h-10 rounded-full bg-red-700"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
+            <button onclick="abrirModal('${capa}')" class="cursor-pointer absolute top-0 left-2 z-95"><i class="fa-solid fa-bookmark text-blue-500" style="font-size:24px;"capa='${capa}'></i></button>
+            <button onclick="removerLivro('${capa}')" class="group-hover:block hidden absolute z-95 right-2 top-2 cursor-pointer w-10 h-10 rounded-full bg-red-700"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
             <div class="div-img">
                 <img src='${capa}' alt="capa do livro" class="w-[150px] h-auto">
             </div>
@@ -85,9 +104,9 @@ function carregarLivrosSalvos () {
         metaLivros.innerHTML += `
         <div class="div-card w-[60px] relative group">
             
-            <button onclick="abrirModal('${capa}')" class="cursor-pointer absolute top-0 left-2 z-99"><i class="fa-solid fa-bookmark text-blue-500" style="font-size:24px;" capa='${capa}'></i></button>
+            <button onclick="abrirModal('${capa}')" class="cursor-pointer absolute top-0 left-2 z-95"><i class="fa-solid fa-bookmark text-blue-500" style="font-size:24px;" capa='${capa}'></i></button>
 
-            <button onclick="removerLivro('${capa}')" class="group-hover:block hidden absolute z-99 right-2 top-2 cursor-pointer w-10 h-10 rounded-full bg-red-700"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
+            <button onclick="removerLivro('${capa}')" class="group-hover:block hidden absolute z-95 right-2 top-2 cursor-pointer w-10 h-10 rounded-full bg-red-700"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
             <div class="div-img">
                 <img src='${capa}' alt="capa do livro" class="w-[150px] h-auto">
             </div>

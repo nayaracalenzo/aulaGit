@@ -1,6 +1,5 @@
  * {
     box-sizing: border-box;
-    text-decoration: none;
     font-family: "Inter", sans-serif;
 } 
 
@@ -13,7 +12,7 @@ header {
     padding: 30px 100px;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 98;
     width: 100%;
 }
 
@@ -64,12 +63,7 @@ header {
     
 }
 
-.section-cards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+
 
 .tag-p {
     top: 10px;
