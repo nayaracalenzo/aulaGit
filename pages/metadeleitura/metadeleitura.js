@@ -61,6 +61,7 @@ function adicionarLivro (capa) {
     if (!livrosSalvos.includes(capa)) {
          metaLivros.innerHTML += `
         <div class="div-card group w-[60px] relative">
+            <button onclick="abrirModal('${capa}')" class="cursor-pointer absolute top-0 left-2 z-99"><i class="fa-solid fa-bookmark text-blue-500" style="font-size:24px;"capa='${capa}'></i></button>
             <button onclick="removerLivro('${capa}')" class="group-hover:block hidden absolute z-99 right-2 top-2 cursor-pointer w-10 h-10 rounded-full bg-red-700"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
             <div class="div-img">
                 <img src='${capa}' alt="capa do livro" class="w-[150px] h-auto">
@@ -83,6 +84,9 @@ function carregarLivrosSalvos () {
 
         metaLivros.innerHTML += `
         <div class="div-card w-[60px] relative group">
+            
+            <button onclick="abrirModal('${capa}')" class="cursor-pointer absolute top-0 left-2 z-99"><i class="fa-solid fa-bookmark text-blue-500" style="font-size:24px;" capa='${capa}'></i></button>
+
             <button onclick="removerLivro('${capa}')" class="group-hover:block hidden absolute z-99 right-2 top-2 cursor-pointer w-10 h-10 rounded-full bg-red-700"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
             <div class="div-img">
                 <img src='${capa}' alt="capa do livro" class="w-[150px] h-auto">
@@ -92,10 +96,36 @@ function carregarLivrosSalvos () {
     });
 }
 
+
+function alterarStatus (select) {
+    const cores = ['blue', 'yellow', 'green']
+    select.classList.remove(...cores.map(cor => `bg-${cor}-500`))
+    select.classList.add(`bg-${select.value}-500`)
+
+    const capa = select.getAttribute('capa')
+
+    const icone = document.querySelector(`.fa-bookmark[capa='${capa}']`)
+    icone.classList.remove(...cores.map(cor => `text-${cor}-500`))
+    icone.classList.add(`text-${select.value}-500`)
+}
+
 function removerLivro (capa) {
     const livrosSalvos = JSON.parse(localStorage.getItem('metaLivros')) || [];
     const novaLista = livrosSalvos.filter(capaSalva => capaSalva !== capa)
     localStorage.setItem('metaLivros', JSON.stringify(novaLista));
 
     carregarLivrosSalvos()
+}
+
+function abrirModal (capa) {
+    document.getElementById("mudarDisplay").style.display = 'block'
+    document.body.classList.add('overflow-y-hidden')
+
+    const statusLeitura = document.getElementById("statusLeitura")
+    statusLeitura.setAttribute('capa', capa)
+}
+
+function fecharModal () {
+    document.getElementById("mudarDisplay").style.display = 'none'
+    document.body.classList.remove('overflow-y-hidden')
 }
