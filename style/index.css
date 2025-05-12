@@ -52,18 +52,6 @@ header {
     display: none;
 }
 
-.div-card {
-    border: 1px solid #9f9c9c;
-    width: 230px;
-    /* text-align: center; */
-}
-
-.div-card  img {
-    width: 80%;
-    
-}
-
-
 
 .tag-p {
     top: 10px;
@@ -76,13 +64,7 @@ header {
     border-radius: 10px;
 }
 
-.div-img {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    background-color: #f4eeee;
-    height: 270px;
-}
+
 
 h2 > a {
     font-size: 12px;
